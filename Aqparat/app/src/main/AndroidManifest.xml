@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kz.daniyar.aqparat" >
+    package="pro.vylgin.app" >
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/ic_launcher_new"
+        android:label="Aqparat"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="Aqparat" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".NewsViewer"
+            android:label="@string/title_activity_news_viewer" >
+        </activity>
+        <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="kz.daniyar.aqparat.MainActivity" />
+            android:label="@string/title_activity_settings" >
         </activity>
     </application>
 

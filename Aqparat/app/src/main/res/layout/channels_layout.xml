@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/channel"
+    android:background="#FFFFFF"
+    android:layout_height="wrap_content">
+<ImageView
+    android:layout_width="120dp"
+    android:layout_height="100dp"
+    android:src="@drawable/channel_sample"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/image_ch"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nur.kz"
+        android:layout_below="@+id/image_ch"
+        android:textSize="17dp"
+        android:padding="3dp"
+        android:id="@+id/name"/>
+    <ImageView
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:src="@drawable/subscribe"
+        android:layout_alignParentRight="true"
+        android:padding="3dp"
+        android:id="@+id/subs"
+        android:layout_alignBottom="@+id/name"/>
+
+
+
+
+
+
+
+</RelativeLayout>

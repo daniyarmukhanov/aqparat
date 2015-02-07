@@ -2,13 +2,13 @@
 
     <!-- These settings headers are only used on tablets. -->
 
-    <header android:fragment="kz.daniyar.aqparat.SettingsActivity$GeneralPreferenceFragment"
+    <header android:fragment="pro.vylgin.app.SettingsActivity$GeneralPreferenceFragment"
         android:title="@string/pref_header_general" />
 
-    <header android:fragment="kz.daniyar.aqparat.SettingsActivity$NotificationPreferenceFragment"
+    <header android:fragment="pro.vylgin.app.SettingsActivity$NotificationPreferenceFragment"
         android:title="@string/pref_header_notifications" />
 
-    <header android:fragment="kz.daniyar.aqparat.SettingsActivity$DataSyncPreferenceFragment"
+    <header android:fragment="pro.vylgin.app.SettingsActivity$DataSyncPreferenceFragment"
         android:title="@string/pref_header_data_sync" />
 
 </preference-headers>
