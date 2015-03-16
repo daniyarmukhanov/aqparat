@@ -75,8 +75,14 @@ public class FeedAdapter extends BaseAdapter{
         if(type.equalsIgnoreCase("bookmark"))
             image.setImageDrawable(bkmr);
         title.setText(resultp.get("title"));
-
-        resource.setText(resultp.get("source"));
+        String resource_id=resultp.get("source");
+        if(resource_id.equals("4"))
+            resource_id="Tengrinews.kz";
+        if(resource_id.equals("3"))
+            resource_id="zakon.kz";
+        if(resource_id.equals("2"))
+            resource_id="vlast.kz";
+        resource.setText(resource_id);
 
         category.setText(resultp.get("category"));
 
@@ -91,7 +97,14 @@ public class FeedAdapter extends BaseAdapter{
                 //intent.setClass(context,NewsItem.class);
                 intent.putExtra("text", resultp.get("text"));
                 intent.putExtra("title", resultp.get("title"));
-                intent.putExtra("source", resultp.get("source"));
+                String resource_id=resultp.get("source");
+                if(resource_id.equals("4"))
+                    resource_id="Tengrinews.kz";
+                if(resource_id.equals("3"))
+                    resource_id="zakon.kz";
+                if(resource_id.equals("2"))
+                    resource_id="vlast.kz";
+                intent.putExtra("source", resource_id);
                 intent.putExtra("date",resultp.get("date"));
                 intent.putExtra("type", type);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
