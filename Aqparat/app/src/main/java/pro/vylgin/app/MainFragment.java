@@ -73,10 +73,10 @@ public class MainFragment extends SherlockFragment {
             public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) { }
         };
 
-        tab = actionBar.newTab().setText("Best").setTabListener(tabListener);
+        tab = actionBar.newTab().setText("Feed").setTabListener(tabListener);
         actionBar.addTab(tab);
 
-        tab = actionBar.newTab().setText("Subscription").setTabListener(tabListener);
+        tab = actionBar.newTab().setText("Best").setTabListener(tabListener);
         actionBar.addTab(tab);
 
 

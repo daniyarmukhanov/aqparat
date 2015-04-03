@@ -92,7 +92,7 @@ public class MainActivity extends SherlockFragmentActivity {
                 showFragment(new ChannelsFragment());
                 break;
             case 2:
-                showFragment(new NewsFragment("bookmark"));
+                showFragment(new BookmarksFragment());
                 break;
             case 3:
                 showFragment(new TopicsFragment());
@@ -138,6 +138,21 @@ public class MainActivity extends SherlockFragmentActivity {
             menu.showContent();
         else
             menu.showMenu();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
 }

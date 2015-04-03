@@ -2,9 +2,11 @@ package pro.vylgin.app;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,9 +17,23 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import jsonparser.JSONParser;
+
 
 public class NewsViewer extends Activity {
     RelativeLayout relativeLayout;
+    String textlong,id;
+    TextView title, resource, text, date;
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     @Override
@@ -27,13 +43,14 @@ public class NewsViewer extends Activity {
           getActionBar().setHomeButtonEnabled(true);
           getActionBar().setDisplayShowCustomEnabled(true);
           getActionBar().setDisplayHomeAsUpEnabled(true);
-        TextView title, resource, text, date;
+
         String type;
         final ImageView image;
         Intent recieve=getIntent();
         relativeLayout=(RelativeLayout)findViewById(R.id.white);
         title=(TextView)findViewById(R.id.title);
         resource=(TextView)findViewById(R.id.resourceText);
+        id=recieve.getStringExtra("id");
 
         image=(ImageView)findViewById(R.id.image);
         type=recieve.getStringExtra("type");
@@ -48,9 +65,12 @@ public class NewsViewer extends Activity {
         if(type.equalsIgnoreCase("bookmark")){
             image.setImageDrawable(bkmr);
         }
+        if(recieve.getStringExtra("photo").length()>4)
+            new ImageLoader(this).DisplayImage(recieve.getStringExtra("photo"),image);
         title.setText(recieve.getStringExtra("title"));
         resource.setText(recieve.getStringExtra("source"));
-         text.setText(recieve.getStringExtra("text"));
+        new GetText().execute();
+
         date.setText(recieve.getStringExtra("date"));
 
     }
@@ -79,6 +99,56 @@ public class NewsViewer extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public class GetText extends AsyncTask<String, String, String> {
+
+        private JSONParser jsonParser = new JSONParser();
+        JSONArray jsonArray;
+        JSONObject jsonObject;
+        ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(NewsViewer.this);
+            progressDialog.setMessage("Loading text...");
+            progressDialog.setIndeterminate(false);
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... str) {
+
+
+
+            jsonObject = jsonParser.getJSONFromUrl("http://mukhanov.me/aqparat/get_news.php?pid="+id);
+
+            try {
+                jsonArray=jsonObject.getJSONArray("news");
+                JSONObject newsobject=jsonArray.getJSONObject(0);
+                textlong=newsobject.getString("text");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressDialog.dismiss();
+            text.setText(textlong);
+
+
+
+            //((PullToRefresh_Master) adsListView).onRefreshComplete();
+
+        }
     }
 
 }

@@ -16,9 +16,9 @@ public class ViewPagerColorAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int arg0) {
         switch (arg0) {
             case 0:
-                return new NewsFragment("Best");
-            case 1:
                 return new NewsFragment("Subscription");
+            case 1:
+                return new BestNewsFragment();
 
         }
 
