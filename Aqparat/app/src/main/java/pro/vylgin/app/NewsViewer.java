@@ -45,14 +45,16 @@ public class NewsViewer extends Activity {
           getActionBar().setDisplayHomeAsUpEnabled(true);
 
         String type;
-        final ImageView image;
+        final ImageView image, resimage;
         Intent recieve=getIntent();
         relativeLayout=(RelativeLayout)findViewById(R.id.white);
+        resimage=(ImageView)findViewById(R.id.resourceImage);
         title=(TextView)findViewById(R.id.title);
         resource=(TextView)findViewById(R.id.resourceText);
         id=recieve.getStringExtra("id");
 
         image=(ImageView)findViewById(R.id.image);
+
         type=recieve.getStringExtra("type");
         text=(TextView)findViewById(R.id.text);
         date=(TextView)findViewById(R.id.date);
@@ -66,6 +68,15 @@ public class NewsViewer extends Activity {
             new ImageLoader(this).DisplayImage(recieve.getStringExtra("photo"),image);
         title.setText(recieve.getStringExtra("title"));
         resource.setText(recieve.getStringExtra("source"));
+        String resource_id=recieve.getStringExtra("res_id");
+        if (resource_id.equals("4"))
+            resource_id = "Tengrinews.kz";
+        if (resource_id.equals("3")) {
+            resimage.setImageDrawable(res.getDrawable(R.drawable.zakon));
+                   }
+        if (resource_id.equals("2")) {
+               resimage.setImageDrawable(res.getDrawable(R.drawable.vlast));
+        }
         new GetText().execute();
 
         date.setText(recieve.getStringExtra("date"));

@@ -105,6 +105,8 @@ public class FeedAdapterLittle extends BaseAdapter {
                 intent.putExtra("id", resultp.get("text"));
                 intent.putExtra("title", resultp.get("title"));
                 intent.putExtra("photo", resultp.get("photo"));
+                intent.putExtra("res_id", resultp.get("source"));
+
                 String resource_id = resultp.get("source");
                 if (resource_id.equals("4"))
                     resource_id = "Tengrinews.kz";

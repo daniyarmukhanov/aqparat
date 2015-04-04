@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/image"
                 android:adjustViewBounds="true"
-                android:src="@drawable/done"
+                android:src="@drawable/unavailable"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true"/>
             <TextView
