@@ -54,11 +54,17 @@ public class ChannelsFragment extends SherlockFragment {
         protected String doInBackground(String... strings) {
 
             channelList=new ArrayList<HashMap<String, String>>();
-            for (int i = 1; i <20 ; i++) {
+
                 HashMap<String, String> map = new HashMap<String, String>();
-                map.put("title", "Channel"+i);
-                 channelList.add(map);
-            }
+                map.put("title", "Tengrinews.kz");
+                channelList.add(map);
+            map = new HashMap<String, String>();
+            map.put("title", "Zakon.kz");
+            channelList.add(map);
+            map = new HashMap<String, String>();
+            map.put("title", "Vlast.kz");
+            channelList.add(map);
+
 
 
 

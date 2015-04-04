@@ -58,13 +58,10 @@ public class NewsViewer extends Activity {
         date=(TextView)findViewById(R.id.date);
         Resources res = getResources(); // need this to fetch the drawable
         Drawable draw = res.getDrawable( R.drawable.news_fish );
-        Drawable bkmr = res.getDrawable( R.drawable.bookmarked );
         if(type.equalsIgnoreCase("best")){
             image.setImageDrawable(draw);
         }
-        if(type.equalsIgnoreCase("bookmark")){
-            image.setImageDrawable(bkmr);
-        }
+
         if(recieve.getStringExtra("photo").length()>4)
             new ImageLoader(this).DisplayImage(recieve.getStringExtra("photo"),image);
         title.setText(recieve.getStringExtra("title"));

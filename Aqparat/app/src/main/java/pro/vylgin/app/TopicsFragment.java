@@ -44,20 +44,16 @@ public class TopicsFragment extends SherlockFragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setMessage("loading...");
-            progressDialog.setIndeterminate(false);
-            progressDialog.setCancelable(false);
-            progressDialog.show();
+
         }
 
         @Override
         protected String doInBackground(String... strings) {
 
             channelList=new ArrayList<HashMap<String, String>>();
-            for (int i = 1; i <10 ; i++) {
+            for (int i = 0; i < 18 ; i++) {
                 HashMap<String, String> map = new HashMap<String, String>();
-                map.put("title", "Topic "+i);
+                map.put("title", ""+i);
                 channelList.add(map);
             }
 
@@ -70,7 +66,6 @@ public class TopicsFragment extends SherlockFragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            progressDialog.dismiss();
             TopicsAdapter channelsAdapter=new TopicsAdapter(getActivity().getBaseContext(),  channelList);
             channelsListView.setAdapter(channelsAdapter);
 

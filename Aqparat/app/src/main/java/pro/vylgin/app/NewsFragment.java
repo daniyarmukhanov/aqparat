@@ -66,11 +66,11 @@ public class NewsFragment extends SherlockFragment {
                     mSwipeRefreshLayout.setRefreshing(true);
                     feedList = new ArrayList<HashMap<String, String>>();
                     page=0;
-                    new ShowFeed().execute();
+                   // new ShowFeed().execute();
                 }
             });
             //d mSwipeRefreshLayout.setColorScheme(R.color.blue, R.color.green, R.color.yellow, R.color.red);
-            new ShowFeed().execute();
+            //new ShowFeed().execute();
             Button btnLoadMore = new Button(getActivity());
             btnLoadMore.setText("Load More");
 
@@ -81,7 +81,7 @@ public class NewsFragment extends SherlockFragment {
                 public void onClick(View v) {
                     page++;
                     mSwipeRefreshLayout.setRefreshing(true);
-                    new ShowFeed().execute();
+                   // new ShowFeed().execute();
                 }
             });
 

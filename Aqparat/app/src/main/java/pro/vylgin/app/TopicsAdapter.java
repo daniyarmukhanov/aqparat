@@ -23,12 +23,15 @@ public class TopicsAdapter extends BaseAdapter {
     Context context;
     LayoutInflater inflater;
     Boolean done;
+
     ArrayList<HashMap<String, String>> data;
     HashMap<String, String> resultp = new HashMap<String, String>();
 
     public TopicsAdapter(Context context, ArrayList<HashMap<String, String>> arrayList) {
         this.context = context;
         data = arrayList;
+        done = false;
+
     }
 
     @Override
@@ -47,7 +50,7 @@ public class TopicsAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         View itemView = null;
 
 
@@ -59,28 +62,68 @@ public class TopicsAdapter extends BaseAdapter {
             itemView = view;
         }
         resultp = data.get(i);
-        TextView name = (TextView) itemView.findViewById(R.id.name);
-        name.setText(resultp.get("title"));
-        final LinearLayout sub = (LinearLayout) itemView.findViewById(R.id.subscription);
-        final TextView subs = (TextView) itemView.findViewById(R.id.textsub);
-        done = false;
-        sub.setOnClickListener(new View.OnClickListener() {
+        final ImageView sub;
+        final ImageView topic;
+        topic=(ImageView)itemView.findViewById(R.id.image_ch);
+        sub=(ImageView)itemView.findViewById(R.id.subs);
+        if(resultp.get("title").equalsIgnoreCase(""+0))
+        topic.setImageDrawable(context.getResources().getDrawable(R.drawable.daily));
+        if(resultp.get("title").equalsIgnoreCase(""+1))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.politics));
+        if(resultp.get("title").equalsIgnoreCase(""+2))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.world));
+        if(resultp.get("title").equalsIgnoreCase(""+3))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.men));
+        if(resultp.get("title").equalsIgnoreCase(""+4))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.women));
+        if(resultp.get("title").equalsIgnoreCase(""+5))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.sport));
+        if(resultp.get("title").equalsIgnoreCase(""+6))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.society));
+        if(resultp.get("title").equalsIgnoreCase(""+7))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.health));
+        if(resultp.get("title").equalsIgnoreCase(""+8))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.animal));
+        if(resultp.get("title").equalsIgnoreCase(""+9))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.history));
+        if(resultp.get("title").equalsIgnoreCase(""+10))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.realstate));
+        if(resultp.get("title").equalsIgnoreCase(""+11))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.tourism));
+        if(resultp.get("title").equalsIgnoreCase(""+12))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.edu));
+        if(resultp.get("title").equalsIgnoreCase(""+13))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.auto));
+        if(resultp.get("title").equalsIgnoreCase(""+14))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.afisha));
+        if(resultp.get("title").equalsIgnoreCase(""+15))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.business));
+        if(resultp.get("title").equalsIgnoreCase("" + 16))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.economic));
+        if(resultp.get("title").equalsIgnoreCase(""+17))
+            topic.setImageDrawable(context.getResources().getDrawable(R.drawable.culture));
+
+        topic.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
-            public void onClick(View view) {
-                if (!done) {
-                    sub.setBackgroundColor(Color.GREEN);
-                    subs.setText("Subscribed");
-                    subs.setTextColor(Color.BLACK);
+            public void onClick(View v) {
+                Resources res = context.getResources(); // need this to fetch the drawable
+                Drawable draw = res.getDrawable(R.drawable.done);
+                Drawable draw1 = res.getDrawable(R.drawable.subscribe);
+                 if (!done) {
+                    sub.setImageDrawable(draw);
                     done = true;
                 } else {
-                    sub.setBackgroundColor(Color.BLUE);
-                    subs.setText("Subscribe");
-                    subs.setTextColor(Color.WHITE);
-                    done = false;
-                    Log.d("unsubscribe", "true");
+                    sub.setImageDrawable(draw1);
+                    done=false;
                 }
+
             }
         });
+
+
+
         return itemView;
     }
 }

@@ -68,12 +68,10 @@ public class FeedAdapter extends BaseAdapter{
         image=(ImageView)itemView.findViewById(R.id.image);
         Resources res = context.getResources(); // need this to fetch the drawable
         Drawable draw = res.getDrawable( R.drawable.news );
-        Drawable bkmr = res.getDrawable( R.drawable.bookmarked );
         if(type.equalsIgnoreCase("subscription")){
             image.setImageDrawable(draw);
         }
-        if(type.equalsIgnoreCase("bookmark"))
-            image.setImageDrawable(bkmr);
+
         title.setText(resultp.get("title"));
         String resource_id=resultp.get("source");
         if(resource_id.equals("4"))

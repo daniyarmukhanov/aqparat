@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -56,22 +57,21 @@ public class ChannelsAdapter extends BaseAdapter {
             itemView = view;
         }
         resultp = data.get(i);
-        TextView name = (TextView) itemView.findViewById(R.id.name);
-        name.setText(resultp.get("title"));
-        final ImageView sub = (ImageView) itemView.findViewById(R.id.subs);
-        done = false;
+        ImageView channel=(ImageView)itemView.findViewById(R.id.image_ch);
+        if(resultp.get("title").equalsIgnoreCase("tengrinews.kz"))
+            channel.setImageDrawable(context.getResources().getDrawable(R.drawable.tengri));
+        if(resultp.get("title").equalsIgnoreCase("zakon.kz"))
+            channel.setImageDrawable(context.getResources().getDrawable(R.drawable.zakon_kz));
+        if(resultp.get("title").equalsIgnoreCase("vlast.kz"))
+            channel.setImageDrawable(context.getResources().getDrawable(R.drawable.vlastbig));
+        final Button sub=(Button)itemView.findViewById(R.id.subbutton);
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Resources res = context.getResources(); // need this to fetch the drawable
-                Drawable draw = res.getDrawable(R.drawable.done);
-                Drawable draw1 = res.getDrawable(R.drawable.subscribe);
-                if (!done) {
-                    sub.setImageDrawable(draw);
-                    done = true;
-                } else {
-                    sub.setImageDrawable(draw1);
-                    done=false;
+            public void onClick(View v) {
+                if(sub.getText().toString().equalsIgnoreCase("subscribe")){
+                   sub.setText("Unsubscribe");
+                }else{
+                    sub.setText("Subscribe");
                 }
             }
         });
