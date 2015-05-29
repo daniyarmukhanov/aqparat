@@ -101,6 +101,8 @@ public class NewsFragment extends SherlockFragment {
         JSONArray jsonArray;
         JSONObject jsonObject;
         ProgressDialog progressDialog;
+        TinyDB tinydb;
+        ArrayList<String>channels;
 
         @Override
         protected void onPreExecute() {
@@ -120,7 +122,16 @@ public class NewsFragment extends SherlockFragment {
 
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("page", "" + page));
-
+            tinydb = new TinyDB(getActivity().getApplicationContext());
+            channels=tinydb.getListString("channels");
+            if(channels.size()>0){
+                String whereclause="WHERE resource_id='"+channels.get(0)+"' ";
+                for(int i=1;i<channels.size();i++){
+                    whereclause+="OR resource_id='"+channels.get(i)+"' ";
+                }
+                params.add(new BasicNameValuePair("where",whereclause));
+                Log.d("wh", whereclause);
+            }
             jsonObject = jsonParser.makeHttpRequest("http://mukhanov.me/aqparat/allnews.php", "POST", params);
 
             try {
@@ -140,6 +151,7 @@ public class NewsFragment extends SherlockFragment {
                     map.put("category", "general");
                     map.put("date", jsonObject.getString("time"));
                     map.put("photo", jsonObject.getString("photo"));
+                    map.put("link", jsonObject.getString("link"));
                     feedList.add(map);
                 }
             } catch (JSONException e) {
@@ -153,8 +165,9 @@ public class NewsFragment extends SherlockFragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+
             progressDialog.dismiss();
-            FeedAdapterLittle feedAdapter = new FeedAdapterLittle(getActivity().getBaseContext(), (ArrayList<HashMap<String, String>>) feedList, type);
+            FeedAdapterLittle feedAdapter = new FeedAdapterLittle(getActivity().getBaseContext(), (ArrayList<HashMap<String, String>>) feedList);
             feedView.setAdapter(feedAdapter);
             feedView.setSelection(page*15-1);
             mSwipeRefreshLayout.setRefreshing(false);

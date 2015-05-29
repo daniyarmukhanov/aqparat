@@ -17,4 +17,7 @@ dependencies {
     compile project(':lib:SlidingMenu')
     compile 'com.android.support:support-v4:21.0.3'
     compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
+    compile files('lib/lib/boilerpipe-1.2.0.jar')
+    compile 'com.parse.bolts:bolts-android:1.+'
+    compile fileTree(include: 'Parse-*.jar', dir: 'lib')
 }

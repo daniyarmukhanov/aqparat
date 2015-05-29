@@ -29,13 +29,11 @@ public class FeedAdapterLittle extends BaseAdapter {
     HashMap<String, String> resultp = new HashMap<String, String>();
     RelativeLayout relativeLayout;
     LinearLayout greyer;
-    String type;
-    ImageLoader imageLoader;
+        ImageLoader imageLoader;
 
-    public FeedAdapterLittle(Context context, ArrayList<HashMap<String, String>> arrayList, String type) {
+    public FeedAdapterLittle(Context context, ArrayList<HashMap<String, String>> arrayList) {
         this.context = context;
         data = arrayList;
-        this.type = type;
         imageLoader=new ImageLoader(context);
     }
 
@@ -73,24 +71,15 @@ public class FeedAdapterLittle extends BaseAdapter {
         image = (ImageView) itemView.findViewById(R.id.image);
         Resources res = context.getResources(); // need this to fetch the drawable
         Drawable draw = res.getDrawable(R.drawable.unavailable);
-        if (type.equalsIgnoreCase("subscription")) {
-            image.setImageDrawable(draw);
-        }
+
         title.setText(resultp.get("title"));
         String resource_id = resultp.get("source");
-        if(resultp.get("photo").length()>4)
-        imageLoader.DisplayImage(resultp.get("photo"),image);
-        if (resource_id.equals("4"))
-            resource_id = "Tengrinews.kz";
-        if (resource_id.equals("3")) {
-            resourceImage.setImageDrawable(res.getDrawable(R.drawable.zakon));
-            resource_id = "zakon.kz";
+        if(resultp.get("photo").length()>4){
+        imageLoader.DisplayImage(resultp.get("photo"),image);}else{
+            image.setVisibility(View.GONE);
         }
-        if (resource_id.equals("2")) {
-            resource_id = "vlast.kz";
 
-            resourceImage.setImageDrawable(res.getDrawable(R.drawable.vlast));
-        }
+        //resourceImage.setVisibility(View.GONE);
         resource.setText(resource_id);
 
         // category.setText(resultp.get("category"));
@@ -106,17 +95,11 @@ public class FeedAdapterLittle extends BaseAdapter {
                 intent.putExtra("title", resultp.get("title"));
                 intent.putExtra("photo", resultp.get("photo"));
                 intent.putExtra("res_id", resultp.get("source"));
-
+                intent.putExtra("link", resultp.get("link"));
                 String resource_id = resultp.get("source");
-                if (resource_id.equals("4"))
-                    resource_id = "Tengrinews.kz";
-                if (resource_id.equals("3"))
-                    resource_id = "zakon.kz";
-                if (resource_id.equals("2"))
-                    resource_id = "vlast.kz";
                 intent.putExtra("source", resource_id);
                 intent.putExtra("date", resultp.get("date"));
-                intent.putExtra("type", type);
+
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

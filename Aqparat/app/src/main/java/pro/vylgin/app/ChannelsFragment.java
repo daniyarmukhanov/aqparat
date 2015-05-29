@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ListView;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragment;
@@ -29,11 +30,12 @@ public class ChannelsFragment extends SherlockFragment {
         actionBar.removeAllTabs();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setTitle("Channels");
-        channelsListView=(GridView)view.findViewById(R.id.channels);
+        channelsListView = (GridView) view.findViewById(R.id.channels);
         new GetChannels().execute();
 
         return view;
     }
+
     public class GetChannels extends AsyncTask<String, String, String> {
 
 
@@ -53,19 +55,13 @@ public class ChannelsFragment extends SherlockFragment {
         @Override
         protected String doInBackground(String... strings) {
 
-            channelList=new ArrayList<HashMap<String, String>>();
-
+            channelList = new ArrayList<HashMap<String, String>>();
+            String channels[] = {"tengrinews.kz", "baq.kz", "nur.kz","zakon.kz", "vlast.kz", "forbes.kz","kapital.kz","vesti.kz","sports.kz","bnews.kz","inform.kz","today.kz","liter.kz","makala.kz"};
+            for (int i = 0; i < channels.length; i++) {
                 HashMap<String, String> map = new HashMap<String, String>();
-                map.put("title", "Tengrinews.kz");
+                map.put("title", channels[i]);
                 channelList.add(map);
-            map = new HashMap<String, String>();
-            map.put("title", "Zakon.kz");
-            channelList.add(map);
-            map = new HashMap<String, String>();
-            map.put("title", "Vlast.kz");
-            channelList.add(map);
-
-
+            }
 
 
             return null;
@@ -76,9 +72,8 @@ public class ChannelsFragment extends SherlockFragment {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             progressDialog.dismiss();
-            ChannelsAdapter channelsAdapter=new ChannelsAdapter(getActivity().getBaseContext(), (ArrayList<HashMap<String, String>>) channelList);
+            ChannelsAdapter channelsAdapter = new ChannelsAdapter(getActivity().getBaseContext(), (ArrayList<HashMap<String, String>>) channelList);
             channelsListView.setAdapter(channelsAdapter);
-
 
 
             //((PullToRefresh_Master) adsListView).onRefreshComplete();

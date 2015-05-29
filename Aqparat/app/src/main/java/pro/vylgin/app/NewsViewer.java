@@ -6,11 +6,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -32,7 +34,7 @@ import jsonparser.JSONParser;
 
 public class NewsViewer extends Activity {
     RelativeLayout relativeLayout;
-    String textlong,id;
+    String textlong,id, link;
     TextView title, resource, text, date;
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
@@ -44,7 +46,7 @@ public class NewsViewer extends Activity {
           getActionBar().setDisplayShowCustomEnabled(true);
           getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        String type;
+        //String type;
         final ImageView image, resimage;
         Intent recieve=getIntent();
         relativeLayout=(RelativeLayout)findViewById(R.id.white);
@@ -55,17 +57,18 @@ public class NewsViewer extends Activity {
 
         image=(ImageView)findViewById(R.id.image);
 
-        type=recieve.getStringExtra("type");
+        //type=recieve.getStringExtra("type");
         text=(TextView)findViewById(R.id.text);
         date=(TextView)findViewById(R.id.date);
+        link=recieve.getStringExtra("link");
         Resources res = getResources(); // need this to fetch the drawable
         Drawable draw = res.getDrawable( R.drawable.news_fish );
-        if(type.equalsIgnoreCase("best")){
-            image.setImageDrawable(draw);
-        }
+
 
         if(recieve.getStringExtra("photo").length()>4)
             new ImageLoader(this).DisplayImage(recieve.getStringExtra("photo"),image);
+        else
+        image.setVisibility(View.GONE);
         title.setText(recieve.getStringExtra("title"));
         resource.setText(recieve.getStringExtra("source"));
         String resource_id=recieve.getStringExtra("res_id");
@@ -100,9 +103,18 @@ public class NewsViewer extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
             return true;
         }
-        if(id==android.R.id.home){
+        if (id == R.id.action_share) {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, link);
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
+            return true;
+        }
+        if (id == android.R.id.home) {
             onBackPressed();
         }
 

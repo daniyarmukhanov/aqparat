@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\exploded-aar\com.actionbarsherlock\actionbarsherlock\4.4.0\classes.jar"
+        jar="C:\Users\Данияр\Documents\aqparat\Aqparat\app\lib\lib\boilerpipe-1.2.0.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="af64527b748983a75de9c0756e9768b56b240a49">
-        <dex dex="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\pre-dexed\debug\classes-ddd583beb39ae1c55c0b33cd8a05a53cc65ebb57.jar" />
+        sha1="fc30adb7cd4e3a583f6ca65ed299f285544c9d85">
+        <dex dex="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\pre-dexed\debug\boilerpipe-1.2.0-dfcff1f3c1f6135be1ef12ba846d2592c8cd892a.jar" />
     </item>
     <item
         jar="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\libs\internal_impl-21.0.3.jar"
@@ -16,13 +16,6 @@
         <dex dex="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-b011f5d2f29dacff1f0e91d0cba06ff2ceba06ac.jar" />
     </item>
     <item
-        jar="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\exploded-aar\Aqparat.lib\SlidingMenu\unspecified\classes.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="bb31e6bd028f7be86534e732012c64a46fd77cc9">
-        <dex dex="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\pre-dexed\debug\classes-315b897ff547bc58a985af8403eff6e968029e8c.jar" />
-    </item>
-    <item
         jar="C:\Daniyars\adt-bundle-windows-x86_64\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
         jumboMode="false"
         revision="19.1.0"
@@ -30,11 +23,39 @@
         <dex dex="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-d9d39f5e6dbe0aa7ca6da1362bfe6f3beb283833.jar" />
     </item>
     <item
+        jar="C:\Users\Данияр\Documents\aqparat\Aqparat\app\lib\Parse-1.9.2.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="fe739334780fe321141e62720822c2d456061899">
+        <dex dex="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\pre-dexed\debug\Parse-1.9.2-41dc9301b765c211df04c49c47a1628eec8956c4.jar" />
+    </item>
+    <item
+        jar="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\exploded-aar\com.actionbarsherlock\actionbarsherlock\4.4.0\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="af64527b748983a75de9c0756e9768b56b240a49">
+        <dex dex="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\pre-dexed\debug\classes-ddd583beb39ae1c55c0b33cd8a05a53cc65ebb57.jar" />
+    </item>
+    <item
+        jar="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\exploded-aar\Aqparat.lib\SlidingMenu\unspecified\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="1f5598948eae9dd386707a86195e215310609dea">
+        <dex dex="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\pre-dexed\debug\classes-315b897ff547bc58a985af8403eff6e968029e8c.jar" />
+    </item>
+    <item
         jar="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="19.1.0"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
         <dex dex="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\pre-dexed\debug\classes-96dcc04cf3fb035bbbe4b2d07232f664aa9d4673.jar" />
+    </item>
+    <item
+        jar="C:\Users\Данияр\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.2.0\6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd\bolts-android-1.2.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="C:\Users\Данияр\Documents\aqparat\Aqparat\app\build\intermediates\pre-dexed\debug\bolts-android-1.2.0-5f2e71bd74e6174cdf6deda55c88bdd5f413fa14.jar" />
     </item>
 
 </items>

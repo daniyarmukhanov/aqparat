@@ -1,7 +1,9 @@
 package pro.vylgin.app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
@@ -15,6 +17,10 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.parse.Parse;
+import com.parse.ParseInstallation;
+
+import java.util.ArrayList;
 
 public class MainActivity extends SherlockFragmentActivity {
 
@@ -26,6 +32,8 @@ public class MainActivity extends SherlockFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+     //   Parse.initialize(this, "Zqebwike5ccyVwYAJ0jNjEi5ExiQU33YJuhBkq35", "gLiolY6HqajLgC8i8rDHZhQe9JGJQ9Gdcz5OLprV");
+       // ParseInstallation.getCurrentInstallation().saveInBackground();
         setContentView(R.layout.activity_main);
 
         SlidingMenu menu = new SlidingMenu(this);
@@ -54,8 +62,16 @@ public class MainActivity extends SherlockFragmentActivity {
         if (currentMenuPosition != -1) {
             ((ListView) findViewById(R.id.sidemenu)).setItemChecked(currentMenuPosition, true);
         }
-
-        String[] items = {"Main","Channels", "Bookmarks","Topics"};
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!sp.contains("first")) {
+            TinyDB tinydb = new TinyDB(getApplicationContext());
+            ArrayList<String> channels = new ArrayList<String>();
+            tinydb.putListString("channels", channels);
+            SharedPreferences.Editor ed=sp.edit();
+            ed.putBoolean("first", true);
+            ed.commit();
+        }
+        String[] items = {"Главная","Каналы"};
         ((ListView) findViewById(R.id.sidemenu)).setAdapter(
                 new ArrayAdapter<Object>(
                         this,

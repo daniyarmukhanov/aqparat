@@ -15,12 +15,21 @@
         tools:context="com.shppandroid1.app.MainActivity">
     <ListView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/feed"
         android:divider="@null"
         >
 
     </ListView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:layout_gravity="center_horizontal"
+            android:text="источник: Kaznet.me"/>
 </android.support.v4.widget.SwipeRefreshLayout>
+
 
 </LinearLayout>

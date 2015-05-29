@@ -1,6 +1,8 @@
 package pro.vylgin.app;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -73,13 +75,19 @@ public class MainFragment extends SherlockFragment {
             public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) { }
         };
 
-        tab = actionBar.newTab().setText("Feed").setTabListener(tabListener);
+
+        tab = actionBar.newTab().setText("Лента").setTabListener(tabListener);
         actionBar.addTab(tab);
 
-        tab = actionBar.newTab().setText("Best").setTabListener(tabListener);
+        tab = actionBar.newTab().setText("Популярное").setTabListener(tabListener);
         actionBar.addTab(tab);
-
-
-        return view;
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        if(sharedPreferences.contains("push")) {
+            pager.setCurrentItem(1);
+            editor.remove("push");
+            editor.commit();
+        }
+            return view;
     }
 }
