@@ -2,12 +2,14 @@
 
 <ListView android:id="@+id/sidemenu"
     android:layout_width="match_parent"
+    android:paddingTop="70dp"
     android:layout_height="match_parent"
     android:layout_marginRight="50dp"
-    android:divider="@null"
-    android:dividerHeight="0px"
-    android:footerDividersEnabled="false"
-    android:headerDividersEnabled="false"
     android:choiceMode="singleChoice"
+    android:headerDividersEnabled="true"
+    android:dividerHeight="0dp"
+    android:divider="@null"
+    android:footerDividersEnabled="true"
+
     xmlns:android="http://schemas.android.com/apk/res/android">
 </ListView>

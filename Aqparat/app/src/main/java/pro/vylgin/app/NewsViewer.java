@@ -45,6 +45,7 @@ public class NewsViewer extends Activity {
           getActionBar().setHomeButtonEnabled(true);
           getActionBar().setDisplayShowCustomEnabled(true);
           getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayShowTitleEnabled(false);
 
         //String type;
         final ImageView image, resimage;

@@ -2,6 +2,7 @@ package pro.vylgin.app;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -42,7 +43,7 @@ public class MainActivity extends SherlockFragmentActivity {
         menu.setFadeDegree(0.35f);
         menu.attachToActivity(this, SlidingMenu.SLIDING_WINDOW);
         menu.setMenu(R.layout.sidemenu);
-        menu.setBackgroundColor(0xFF333333);
+        menu.setBackgroundColor(Color.WHITE);
         menu.setBehindWidthRes(R.dimen.slidingmenu_behind_width);
         menu.setSelectorDrawable(R.drawable.sidemenu_items_background);
         changeFragment(0);
@@ -134,9 +135,7 @@ public class MainActivity extends SherlockFragmentActivity {
                 menuToggle();
                 return true;
 
-            case R.id.settings:
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                return true;
+
 
         }
         return super.onOptionsItemSelected(item);

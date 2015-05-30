@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,10 +22,10 @@ import java.util.HashMap;
 public class ChannelsAdapter extends BaseAdapter {
     Context context;
     LayoutInflater inflater;
-    Boolean done;
     TinyDB tinydb;
     static Boolean subs[];
-    ArrayList<String>channels;
+    static ImageView done, plus;
+    ArrayList<String> channels;
     ArrayList<HashMap<String, String>> data;
     HashMap<String, String> resultp = new HashMap<String, String>();
 
@@ -32,11 +33,12 @@ public class ChannelsAdapter extends BaseAdapter {
         this.context = context;
         data = arrayList;
         tinydb = new TinyDB(context);
-        subs=new Boolean[data.size()];
-        channels=tinydb.getListString("channels");
-        for(int j=0;j<subs.length;j++){
-            subs[j]=false;
+        subs = new Boolean[data.size()];
+        channels = tinydb.getListString("channels");
+        for (int j = 0; j < subs.length; j++) {
+            subs[j] = false;
         }
+
     }
 
     @Override
@@ -56,72 +58,89 @@ public class ChannelsAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
-        View itemView = null;
+        View itemView;
 
-
-       inflater = (LayoutInflater) context
+        if (view != null) {
+            itemView = view;
+        } else {
+            itemView = new View(context);
+        }
+        inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         itemView = inflater.inflate(R.layout.channels_layout, viewGroup, false);
         resultp = data.get(i);
-        ImageView channel=(ImageView)itemView.findViewById(R.id.image_ch);
-        if(resultp.get("title").equalsIgnoreCase("tengrinews.kz"))
+        ImageView channel = (ImageView) itemView.findViewById(R.id.image_ch);
+        if (resultp.get("title").equalsIgnoreCase("tengrinews.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.tengri));
-        if(resultp.get("title").equalsIgnoreCase("zakon.kz"))
+        if (resultp.get("title").equalsIgnoreCase("zakon.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.zakon_kz));
-        if(resultp.get("title").equalsIgnoreCase("vlast.kz"))
+        if (resultp.get("title").equalsIgnoreCase("vlast.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.vlastbig));
-        if(resultp.get("title").equalsIgnoreCase("baq.kz"))
+        if (resultp.get("title").equalsIgnoreCase("baq.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.baq));
-        if(resultp.get("title").equalsIgnoreCase("kapital.kz"))
+        if (resultp.get("title").equalsIgnoreCase("kapital.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.kapital));
-        if(resultp.get("title").equalsIgnoreCase("forbes.kz"))
+        if (resultp.get("title").equalsIgnoreCase("forbes.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.forbes));
-        if(resultp.get("title").equalsIgnoreCase("vesti.kz"))
+        if (resultp.get("title").equalsIgnoreCase("vesti.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.vesti));
-        if(resultp.get("title").equalsIgnoreCase("inform.kz"))
+        if (resultp.get("title").equalsIgnoreCase("inform.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.inform));
-        if(resultp.get("title").equalsIgnoreCase("nur.kz"))
+        if (resultp.get("title").equalsIgnoreCase("nur.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.nur));
-        if(resultp.get("title").equalsIgnoreCase("sports.kz"))
+        if (resultp.get("title").equalsIgnoreCase("sports.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.sports));
-        if(resultp.get("title").equalsIgnoreCase("makala.kz"))
+        if (resultp.get("title").equalsIgnoreCase("makala.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.makala));
-        if(resultp.get("title").equalsIgnoreCase("bnews.kz"))
+        if (resultp.get("title").equalsIgnoreCase("bnews.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.bnews));
-        if(resultp.get("title").equalsIgnoreCase("liter.kz"))
+        if (resultp.get("title").equalsIgnoreCase("liter.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.liter));
-        if(resultp.get("title").equalsIgnoreCase("today.kz"))
+        if (resultp.get("title").equalsIgnoreCase("today.kz"))
             channel.setImageDrawable(context.getResources().getDrawable(R.drawable.today));
-        final Button sub=(Button)itemView.findViewById(R.id.subbutton);
-        if(channels.contains(resultp.get("title"))){
-            sub.setText("Отписаться");
-            subs[i]=true;}
-        else {
-            sub.setText("Подписаться");
-            subs[i]=false;
-        }sub.setOnClickListener(new View.OnClickListener() {
+        Button sub = (Button) itemView.findViewById(R.id.subbutton);
+        final View sub1=(View)itemView.findViewById(R.id.black);
+       // done = (ImageView) itemView.findViewById(R.id.done);
+        //plus = (ImageView) itemView.findViewById(R.id.plus);
+        if (channels.contains(resultp.get("title"))) {
+            sub1.setVisibility(Button.INVISIBLE);
+            subs[i] = true;
+        } else {
+           sub1.setVisibility(Button.VISIBLE);
+            subs[i] = false;
+        }
+        sub.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("position",""+i);
+                Log.d("position", "" + i);
                 resultp = data.get(i);
-                if(!subs[i]){
-                    channels=tinydb.getListString("channels");
+                if (!subs[i]) {
+                    channels = tinydb.getListString("channels");
                     channels.add(resultp.get("title"));
-                    tinydb.putListString("channels",channels);
-                    subs[i]=true;
-                    sub.setText("Отписаться");
+                    tinydb.putListString("channels", channels);
+                    subs[i] = true;
+                    sub1.setVisibility(Button.INVISIBLE);
+                    Toast.makeText(context,"Подписка на "+resultp.get("title")+" оформлена",Toast.LENGTH_SHORT).show();
                     for (String s : channels) {
-                        Log.d("Channels",s);
+                        Log.d("Channels", s);
                     }
-                }else{
-                    channels=tinydb.getListString("channels");
+
+                } else {
+                    channels = tinydb.getListString("channels");
                     channels.remove(resultp.get("title"));
-                    tinydb.putListString("channels",channels);
-                    subs[i]=false;
-                    sub.setText("Подписаться");
-                }
+                    tinydb.putListString("channels", channels);
+                    subs[i] = false;
+                    sub1.setVisibility(Button.VISIBLE);
+                    Toast.makeText(context,"Вы отписались от "+resultp.get("title"),Toast.LENGTH_SHORT).show();
+                    }
             }
         });
+
+
         return itemView;
     }
+
+
+
+
 }

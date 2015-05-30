@@ -8,7 +8,8 @@
     android:layout_width="140dp"
     android:layout_height="140dp"
     android:layout_centerHorizontal="true"
-    android:id="@+id/image_ch"/>
+    android:id="@+id/image_ch"
+    android:src="@drawable/bnews"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,15 +31,44 @@
         android:id="@+id/subs"
         android:visibility="gone"
         android:layout_alignBottom="@+id/name"/>
+    <View
+        android:layout_width="141dp"
+        android:layout_height="141dp"
+        android:layout_below="@+id/image_ch"
+        android:background="#20000000"
+        android:id="@+id/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-140dp"></View>
     <Button
-        android:layout_width="146dp"
-        android:layout_height="wrap_content"
-        android:text="Subscribe"
+        android:layout_width="141dp"
+        android:layout_height="141dp"
+        android:text=""
         android:layout_below="@+id/name"
+        android:layout_marginTop="-140dp"
         android:id="@+id/subbutton"
+        android:background="@drawable/subs"
         android:layout_centerHorizontal="true"
         />
-
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/done"
+        android:id="@+id/done"
+        android:layout_marginLeft="-30dp"
+        android:layout_marginTop="-30dp"
+        android:visibility="invisible"
+        android:layout_toRightOf="@+id/image_ch"
+        android:layout_below="@+id/image_ch"/>
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/subscribe"
+        android:id="@+id/plus"
+        android:layout_marginLeft="-30dp"
+        android:visibility="invisible"
+        android:layout_marginTop="-30dp"
+        android:layout_toRightOf="@+id/image_ch"
+        android:layout_below="@+id/image_ch"/>>
 
 
 

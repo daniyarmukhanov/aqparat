@@ -30,6 +30,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:label="Aqparat" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,10 +41,14 @@
         </activity>
         <activity
             android:name=".NewsViewer"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_news_viewer" >
         </activity>
         <activity
             android:name=".SettingsActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_settings" >
         </activity>
 
@@ -77,12 +83,11 @@
 
         <activity
             android:name=".BestNewsViewer"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_best_news_viewer" >
         </activity>
-        <activity
-            android:name=".PushHandle"
-            android:label="@string/title_activity_push_handle" >
-        </activity>
+
     </application>
 
 </manifest>

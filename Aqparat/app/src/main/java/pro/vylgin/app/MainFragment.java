@@ -34,7 +34,11 @@ public class MainFragment extends SherlockFragment {
         actionBar = getSherlockActivity().getSupportActionBar();
         actionBar.removeAllTabs();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        actionBar.setTitle("Main");
+        actionBar.setTitle("Главная");
+        actionBar.setDisplayHomeAsUpEnabled(false);
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayShowHomeEnabled(false);
+        actionBar.show();
 
         ViewPager.SimpleOnPageChangeListener ViewPagerListener = new ViewPager.SimpleOnPageChangeListener() {
             @Override

@@ -30,6 +30,7 @@ public class ChannelsFragment extends SherlockFragment {
         actionBar.removeAllTabs();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setTitle("Channels");
+        actionBar.hide();
         channelsListView = (GridView) view.findViewById(R.id.channels);
         new GetChannels().execute();
 

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="menu_focused_pressed_gray_color">#404040</color>
+    <color name="menu_focused_pressed_gray_color">#CCCCCC</color>
     <color name="blue_dark_color">#3280b8</color>
     <color name="blue" >#1511b0</color>
+    <color name="transparent">#0000</color>
+    <color name="semi">#A0000000</color>
 </resources>

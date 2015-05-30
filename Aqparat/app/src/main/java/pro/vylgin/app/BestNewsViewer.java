@@ -48,6 +48,7 @@ public class BestNewsViewer extends Activity {
         getActionBar().setHomeButtonEnabled(true);
         getActionBar().setDisplayShowCustomEnabled(true);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayShowTitleEnabled(false);
 
 
         //String type;
@@ -108,7 +109,7 @@ public class BestNewsViewer extends Activity {
             super.onPreExecute();
 
             progressDialog = new ProgressDialog(BestNewsViewer.this);
-            progressDialog.setMessage("Подождите...");
+            progressDialog.setMessage("Загрузка...");
             progressDialog.setIndeterminate(false);
             progressDialog.setCancelable(false);
             progressDialog.show();
